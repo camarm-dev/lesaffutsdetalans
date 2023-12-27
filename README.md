@@ -3,14 +3,14 @@ Un software open source d'affut vidéo pour Raspberry Pi
 
 ## Pré-Requis
 - Raspberry Pi 3B
-- Caméra nocturne
-- Détecteur de mouvements
+  - Caméra nocturne
+  - Détecteur de mouvements sur le pin 4
 
 ## Software
 
 Le programme `sensor.py` déclenche la caméra quand un mouvement est détecté, et sauvegarde l'enregistrement. 
 
-Avec une connexion internet, le programme `upload.py` téléversera toutes les vidéos sur [lesaffutsdetalans.fr](https://lesaffutsdetalans.fr) (partie administration, les vidéos doivent être traitées avant d'être publiées) puis les supprimera de cet appareil.
+Avec une connexion internet, le programme `upload.py` téléversera toutes les vidéos sur [lesaffutsdetalans.fr](https://lesaffutsdetalans.fr) (partie administration, les vidéos doivent être traitées avant d'être publiées publiquement) puis les supprimera de cet appareil.
 
 En ligne, on peut voir :
 - La vidéo

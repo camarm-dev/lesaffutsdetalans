@@ -46,7 +46,7 @@ def start_sensor():
     Start the sensor while
     :return:
     """
-    sensor = MotionSensor()
+    sensor = MotionSensor(4)
     sensor.when_motion = record
     sensor.when_no_motion = post_record
 
