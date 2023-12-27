@@ -1,10 +1,22 @@
-# lesaffutsdetalans
-Un software open source d'affut vidéo pour Raspberry Pi
+# Les affuts d'Étalans
+Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web pour retrouver les captures et un guide pour construire son propre affut vidéo !
+
+## Buts
+- [ ] Enregistrer des vidéos
+- [ ] Avoir une API fonctionnelle
+  - [ ] Authentification
+  - [ ] Upload de vidéo
+  - [ ] Récupération de vidéos, ordonnées, triées
+- [ ] Avoir un site fonctionnel
+  - [ ] Sur [lesaffutsdetalans.fr](https://lesaffutsdetalans.fr) 
+- [ ] Pouvoir uploader ses vidéos sur le site avec `upload.py`
 
 ## Pré-Requis
 - Raspberry Pi 3B
   - Caméra nocturne
   - Détecteur de mouvements sur le pin 4
+- Batterie ?
+- Boîtier ?
 
 ## Software
 
