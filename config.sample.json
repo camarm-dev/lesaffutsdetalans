@@ -1,5 +1,6 @@
 {
   "version": "0.0.0",
   "key": "affut-XXXXXXXXXXXXX",
-  "node": "affut-01"
+  "node": "affut-01",
+  "position": [47.13768, 6.25941]
 }

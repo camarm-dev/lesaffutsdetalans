@@ -21,8 +21,8 @@ En ligne, on peut voir :
 ## Structure
 
 - `records`: Dossier contenant les enregistrements
-  - `affut-01_YY-MM-DD-hh-mm-ss.mp4`: Enregistrement vidéo 
-  - `affut-01_YY-MM-DD-hh-mm-ss.report`: JSON contentant les métadonnées 
+  - `affut-01_YYYY-MM-DD_hh.mm.ss.mp4`: Enregistrement vidéo 
+  - `affut-01_YYYY-MM-DD_hh.mm.ss.report`: JSON contentant les métadonnées 
 
 ## Configurer
 
@@ -31,6 +31,12 @@ En ligne, on peut voir :
 {
   "version": "0.0.0",
   "key": "affut-XXXXXXXXXXXXX",
-  "node": "affut-01"
+  "node": "affut-01",
+  "position": [47.13768, 6.25941]
 }
 ```
+
+- `version`: Ne pas modifier
+- `key`: La clé d'API pour envoyer les vidéos avec `upload.py` (optionnel)
+- `node`: Le nom de ce noeud (préférable de suivre le schéma `affutJeanDupont-01`, `affutJeanDupont-02` ou `affut-01`, `affut-02`)
+- `position`: La position de l'affut, latitude, longitude

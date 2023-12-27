@@ -1,34 +1,44 @@
 import json
 from datetime import datetime
+from gpiozero import MotionSensor
+from picamera import PiCamera
 
 
 def record():
-    record_metadata = {
-        "start_date": datetime.now()
-    }
-    record_metadata["end_date"] = datetime.now()
-    post_record(record_metadata)
+    """
+    Increment records, update start_date and start recording a video
+    :return:
+    """
+    global records, camera, start_date
+    records += 1
+    start_date = datetime.now()
+    camera.start_recording()
 
 
-def post_record(record: dict):
-    date = record['start_date']
-    filename = f'{node}_{date.strftime()}'
-    length = (record['end_date'] - date)
+def post_record():
+    """
+    Stop recording a video, and save a report
+    :return:
+    """
+    camera.stop_recording()
+
+    date = start_date
+    end_date = datetime.now()
+    filename = f"'{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}'"
+    length = (end_date - date)
 
     report = {
         "software": version,
         "node": node,
-        "record_duration": length
+        "record_duration": length,
+        "start_date": date,
+        "end_date": end_date
     }
     
     with open(f'records/{filename}.report') as file:
         file.write(json.dumps(report))
     
-    print("[📸] Recorded")
-
-
-def movement_detected():
-    return True
+    print(f"[📸] Recorded x seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
 
 
 def start_sensor():
@@ -36,9 +46,9 @@ def start_sensor():
     Start the sensor while
     :return:
     """
-    while True:
-        if movement_detected():
-            record()
+    sensor = MotionSensor()
+    sensor.when_motion = record
+    sensor.when_no_motion = post_record
 
 
 if __name__ == '__main__':
@@ -47,11 +57,15 @@ if __name__ == '__main__':
 
     node = config['node']
     version = config['version']
+    records = 0
+    camera = PiCamera()
+    start_date = datetime.now()
+
     print(f"[⚡] Starting {node}, version {version}")
 
     try:
         start_sensor()
     except KeyError:
-        print("[⚡] Sensor stopped")
+        print(f"[⚡] Sensor stopped, {records} videos recorded")
     except Exception as e:
         print(f"[🚨] Sensor errored with {e}")
