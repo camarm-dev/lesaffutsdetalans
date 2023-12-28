@@ -34,7 +34,8 @@ def post_record():
         "node": node,
         "record_duration": length,
         "start_date": date,
-        "end_date": end_date
+        "end_date": end_date,
+        "position": config['position']
     }
     
     with open(f'records/{filename}.report') as file:
