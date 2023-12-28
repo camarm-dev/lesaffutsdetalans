@@ -32,8 +32,8 @@ def post_record():
         "software": version,
         "node": node,
         "record_duration": length,
-        "start_date": date,
-        "end_date": end_date,
+        "start_date": date.timestamp(),
+        "end_date": end_date.timestamp(),
         "position": config['position']
     }
     
