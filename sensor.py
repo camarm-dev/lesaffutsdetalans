@@ -51,7 +51,7 @@ def start_sensor():
     sensor = MotionSensor(27)
     was_motion = False
     sensor.wait_for_no_motion()
-    print("[📡] Sensor initialized")
+    print(f"[📡] Sensor initialized, timeout is {int((datetime.now() - sensor_timeout).total_seconds())} seconds")
     while True:
         is_motion = sensor.value == 1
 
@@ -75,6 +75,7 @@ if __name__ == '__main__':
     # camera = PiCamera()
     start_date = datetime.now()
 
+    sensor_timeout = start_date
     print(f"[⚡] Starting {node}, version {version}")
 
     try:
