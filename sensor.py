@@ -1,4 +1,5 @@
 import json
+import logging
 from datetime import datetime
 from time import sleep
 from gpiozero import MotionSensor
@@ -13,7 +14,7 @@ def record():
     global camera, start_date
     start_date = datetime.now()
     # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
-    print("[📸] Start recording, movement detected")
+    logging.info("[📸] Start recording, movement detected")
 
 
 def post_record():
@@ -41,7 +42,7 @@ def post_record():
     with open(f'records/{filename}.report', 'w+') as file:
         file.write(json.dumps(report))
     
-    print(f"[💾] Recorded {length} seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
+    logging.info(f"[💾] Recorded {length} seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
 
 
 def start_sensor():
@@ -52,7 +53,7 @@ def start_sensor():
     sensor = MotionSensor(27)
     was_motion = False
     sensor.wait_for_no_motion()
-    print(f"[📡] Sensor initialized, timeout is {int((datetime.now() - sensor_timeout).total_seconds())} seconds")
+    logging.info(f"[📡] Sensor initialized, timeout is {int((datetime.now() - sensor_timeout).total_seconds())} seconds")
     while True:
         is_motion = sensor.value == 1
 
@@ -67,6 +68,8 @@ def start_sensor():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.WARNING, filename="sensor.logs", filemode="a+",
+                        format="%(asctime)-15s %(levelname)-8s %(message)s")
     with open('config.json') as file:
         config = json.loads(file.read())
 
@@ -77,11 +80,11 @@ if __name__ == '__main__':
     start_date = datetime.now()
 
     sensor_timeout = start_date
-    print(f"[⚡] Starting {node}, version {version}")
+    logging.info(f"[⚡] Starting {node}, version {version}")
 
     try:
         start_sensor()
     except KeyboardInterrupt:
-        print(f"[⚡] Sensor stopped, {records} videos recorded")
+        logging.info(f"[⚡] Sensor stopped, {records} videos recorded")
     except Exception as e:
-        print(f"[🚨] Sensor errored with {e}")
+        logging.error(f"[🚨] Sensor errored with {e}")
