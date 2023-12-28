@@ -1,3 +1,4 @@
 gpiozero~=2.0
 picamera
 requests~=2.25.1
+lgpio
