@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from gpiozero import MotionSensor
+from signal import pause
 # from picamera import PiCamera
 
 
@@ -51,7 +52,7 @@ def start_sensor():
     sensor.when_motion = record
     sensor.when_no_motion = post_record
     while True:
-        sensor.wait_for_active()
+        pause()
 
 
 if __name__ == '__main__':
