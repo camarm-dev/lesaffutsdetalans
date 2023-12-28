@@ -13,7 +13,7 @@ def record():
     global camera, start_date
     start_date = datetime.now()
     # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
-    print("[📷] Start recording, movement detected")
+    print("[📸] Start recording, movement detected")
 
 
 def post_record():
@@ -41,7 +41,7 @@ def post_record():
     with open(f'records/{filename}.report', 'w+') as file:
         file.write(json.dumps(report))
     
-    print(f"[📸] Recorded {length} seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
+    print(f"[💾] Recorded {length} seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
 
 
 def start_sensor():
