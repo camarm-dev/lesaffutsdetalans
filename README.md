@@ -21,7 +21,9 @@ Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web
 
 ## Software
 
-Le programme `sensor.py` déclenche la caméra quand un mouvement est détecté, et sauvegarde l'enregistrement. 
+Le programme `sensor.py` déclenche la caméra quand un mouvement est détecté, et sauvegarde l'enregistrement.
+- La LED allumée indique que le capteur a été initialisé et est fonctionnel
+- La LED clignotante indique qu'un enregistrement est en cour
 
 Avec une connexion internet, le programme `upload.py` téléversera toutes les vidéos sur [lesaffutsdetalans.fr](https://lesaffutsdetalans.fr) (partie administration, les vidéos doivent être traitées avant d'être publiées publiquement) puis les supprimera de cet appareil.
 
