@@ -27,7 +27,7 @@ def post_record():
     date = start_date
     end_date = datetime.now()
     filename = f"{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}"
-    length = (end_date - date)
+    length = end_date - date
 
     report = {
         "software": version,
@@ -41,7 +41,7 @@ def post_record():
     with open(f'records/{filename}.report', 'w+') as file:
         file.write(json.dumps(report))
     
-    print(f"[📸] Recorded x seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
+    print(f"[📸] Recorded {length.total_seconds()} seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
 
 
 def start_sensor():
