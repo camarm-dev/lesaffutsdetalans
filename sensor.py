@@ -51,6 +51,7 @@ def start_sensor():
     sensor = MotionSensor(4)
     sensor.when_motion = record
     sensor.when_no_motion = post_record
+    print(sensor.is_active, sensor.pin, sensor.value)
     while True:
         sensor.wait_for_active()
 
