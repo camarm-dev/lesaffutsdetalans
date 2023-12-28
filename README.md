@@ -1,6 +1,18 @@
 # Les affuts d'Étalans
 Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web pour retrouver les captures et un guide pour construire son propre affut vidéo !
 
+## État du projet
+
+Le programme `sensor.py` peut actuellement : 
+- Détecter un mouvement et lancer la procedure d'enregistrement
+  - Indiquer le statut avec la LED 
+- Enregistrer un rapport avec les métadonnées de la prise de vue
+- Enregistrer toutes ces procédures pour suivre son activité
+
+Prochainement:
+- Enregistrements avec la caméra nocturne
+- Lancement du programme en autonomie
+
 ## Buts
 - [ ] Enregistrer des vidéos
 - [ ] Avoir une API fonctionnelle
