@@ -14,7 +14,7 @@ Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web
 ## Pré-Requis
 - Raspberry Pi 3B
   - Caméra nocturne
-  - Détecteur de mouvements sur le pin 4
+  - Détecteur de mouvements sur le pin 4 (modèle `HC SR501`)
 - Batterie ?
 - Boîtier ?
 
