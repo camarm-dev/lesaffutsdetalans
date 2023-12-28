@@ -49,6 +49,8 @@ def start_sensor():
     sensor = MotionSensor(4)
     sensor.when_motion = record
     sensor.when_no_motion = post_record
+    while True:
+        sensor.wait_for_active()
 
 
 if __name__ == '__main__':
