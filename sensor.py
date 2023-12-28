@@ -70,7 +70,7 @@ def start_sensor():
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, filename="sensor.logs", filemode="a+",
-                        format=logging.BASIC_FORMAT)
+                        format="%(levelname)s:%(name)s:%(asctime)s:%(message)s")
 
     stdout_logger = logging.StreamHandler()
     stdout_logger.setFormatter(logging.Formatter("%(message)s"))
