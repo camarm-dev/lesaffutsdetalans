@@ -1,5 +1,6 @@
 import json
 import logging
+import sys
 from datetime import datetime
 from time import sleep
 from gpiozero import MotionSensor
@@ -68,7 +69,7 @@ def start_sensor():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.WARNING, filename="sensor.logs", filemode="a+",
+    logging.basicConfig(level=logging.WARNING, filename="sensor.logs", filemode="a+", stream=sys.stdout,
                         format="%(asctime)-15s %(levelname)-8s %(message)s")
     with open('config.json') as file:
         config = json.loads(file.read())
