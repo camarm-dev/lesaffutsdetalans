@@ -49,8 +49,6 @@ def start_sensor():
     :return:
     """
     sensor = MotionSensor(27)
-    # sensor.when_motion = record
-    # sensor.when_no_motion = post_record
     was_motion = False
     sensor.wait_for_no_motion()
     while True:
@@ -63,7 +61,6 @@ def start_sensor():
             post_record()
             was_motion = False
 
-        print(sensor.is_active, sensor.pin, sensor.value)
         sleep(0.01)
 
 
