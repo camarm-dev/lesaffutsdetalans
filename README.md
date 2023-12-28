@@ -15,6 +15,7 @@ Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web
 - Raspberry Pi 3B
   - Caméra nocturne
   - Détecteur de mouvements sur le GPIO27 (modèle `HC SR501`: [SENSOR.md]())
+  - Led sur le GPIO18 ([SENSOR.md]())
 - Batterie ?
 - Boîtier ?
 

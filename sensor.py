@@ -1,9 +1,8 @@
 import json
 import logging
-import sys
 from datetime import datetime
 from time import sleep
-from gpiozero import MotionSensor
+from gpiozero import MotionSensor, LED
 # from picamera import PiCamera
 
 
@@ -52,16 +51,20 @@ def start_sensor():
     :return:
     """
     sensor = MotionSensor(27)
+    led = LED(18)
     was_motion = False
     sensor.wait_for_no_motion()
     logging.info(f"[📡] Sensor initialized, timeout is {int((datetime.now() - sensor_timeout).total_seconds())} seconds")
+    led.on()
     while True:
         is_motion = sensor.value == 1
 
         if is_motion and not was_motion:
+            led.blink(0.5, 0.5, background=True)
             record()
             was_motion = True
         elif not is_motion and was_motion:
+            led.on()
             post_record()
             was_motion = False
 
