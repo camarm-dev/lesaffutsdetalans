@@ -1,5 +1,5 @@
 # Les affuts d'Étalans
-Un software open source d'affut vidéo pour Raspberry Pi, mais aussi un site web pour retrouver les captures et un guide pour construire son propre affut vidéo !
+Construction un affut vidéo open source pour Raspberry Pi, mais aussi un site web pour retrouver les captures et un guide pour construire son propre affut vidéo !
 
 ## État du projet
 
