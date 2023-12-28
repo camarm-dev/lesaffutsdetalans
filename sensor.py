@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from gpiozero import MotionSensor
-from picamera import PiCamera
+# from picamera import PiCamera
 
 
 def record():
@@ -12,7 +12,8 @@ def record():
     global records, camera, start_date
     records += 1
     start_date = datetime.now()
-    camera.start_recording()
+    # camera.start_recording(f"'{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}'")
+    print("Movement detected")
 
 
 def post_record():
@@ -20,8 +21,8 @@ def post_record():
     Stop recording a video, and save a report
     :return:
     """
-    camera.stop_recording()
-
+    # camera.stop_recording()
+    print("Movement stopped")
     date = start_date
     end_date = datetime.now()
     filename = f"'{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}'"
@@ -60,7 +61,7 @@ if __name__ == '__main__':
     node = config['node']
     version = config['version']
     records = 0
-    camera = PiCamera()
+    # camera = PiCamera()
     start_date = datetime.now()
 
     print(f"[⚡] Starting {node}, version {version}")
