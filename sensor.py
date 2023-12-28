@@ -1,7 +1,6 @@
 import json
 from datetime import datetime
 from gpiozero import MotionSensor
-from signal import pause
 # from picamera import PiCamera
 
 
@@ -53,7 +52,7 @@ def start_sensor():
     sensor.when_motion = record
     sensor.when_no_motion = post_record
     while True:
-        pause()
+        sensor.wait_for_active()
 
 
 if __name__ == '__main__':
@@ -70,7 +69,7 @@ if __name__ == '__main__':
 
     try:
         start_sensor()
-    except KeyError:
+    except KeyboardInterrupt:
         print(f"[⚡] Sensor stopped, {records} videos recorded")
     except Exception as e:
         print(f"[🚨] Sensor errored with {e}")
