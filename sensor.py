@@ -10,8 +10,7 @@ def record():
     Increment records, update start_date and start recording a video
     :return:
     """
-    global records, camera, start_date
-    records += 1
+    global camera, start_date
     start_date = datetime.now()
     # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
     print("[📷] Start recording, movement detected")
@@ -22,7 +21,9 @@ def post_record():
     Stop recording a video, and save a report
     :return:
     """
+    global records
     # camera.stop_recording()
+    records += 1
     date = start_date
     end_date = datetime.now()
     filename = f"{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}"
