@@ -14,7 +14,7 @@ def record():
     records += 1
     start_date = datetime.now()
     # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
-    print("[📷] Start recording")
+    print("[📷] Start recording, movement detected")
 
 
 def post_record():
