@@ -58,8 +58,10 @@ def start_sensor():
 
         if is_motion and not was_motion:
             record()
+            was_motion = True
         elif not is_motion and was_motion:
             post_record()
+            was_motion = False
 
         print(sensor.is_active, sensor.pin, sensor.value)
         sleep(0.01)
