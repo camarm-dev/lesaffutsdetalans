@@ -51,6 +51,7 @@ def start_sensor():
     sensor = MotionSensor(27)
     was_motion = False
     sensor.wait_for_no_motion()
+    print("[📡] Sensor initialized")
     while True:
         is_motion = sensor.value == 1
 
