@@ -14,7 +14,7 @@ def record():
     records += 1
     start_date = datetime.now()
     # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
-    print("Movement detected")
+    print("[] Start recording")
 
 
 def post_record():
@@ -23,11 +23,10 @@ def post_record():
     :return:
     """
     # camera.stop_recording()
-    print("Movement stopped")
     date = start_date
     end_date = datetime.now()
     filename = f"{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}"
-    length = (end_date - date).total_seconds()
+    length = int((end_date - date).total_seconds())
 
     report = {
         "software": version,
