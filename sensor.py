@@ -69,8 +69,13 @@ def start_sensor():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.WARNING, filename="sensor.logs", filemode="a+", stream=sys.stdout,
+    logging.basicConfig(level=logging.WARNING, filename="sensor.logs", filemode="a+",
                         format="%(asctime)-15s %(levelname)-8s %(message)s")
+
+    stdout_logger = logging.StreamHandler()
+    stdout_logger.setFormatter(logging.Formatter(logging.BASIC_FORMAT))
+    logging.getLogger().addHandler(stdout_logger)
+
     with open('config.json') as file:
         config = json.loads(file.read())
 
