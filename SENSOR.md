@@ -14,4 +14,3 @@ Schéma des branchements ci-dessous.
 
 
 ![Capteur HC SR501: Informations additionnelles](infos.png)
-0
