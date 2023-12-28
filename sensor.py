@@ -13,7 +13,7 @@ def record():
     global records, camera, start_date
     records += 1
     start_date = datetime.now()
-    # camera.start_recording(f"'{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}'")
+    # camera.start_recording(f"{node}_{start_date.strftime('%Y-%m-%d_%H.%M.%S')}.h264")
     print("Movement detected")
 
 
@@ -26,7 +26,7 @@ def post_record():
     print("Movement stopped")
     date = start_date
     end_date = datetime.now()
-    filename = f"'{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}'"
+    filename = f"{node}_{date.strftime('%Y-%m-%d_%H.%M.%S')}"
     length = (end_date - date)
 
     report = {
@@ -38,7 +38,7 @@ def post_record():
         "position": config['position']
     }
     
-    with open(f'records/{filename}.report') as file:
+    with open(f'records/{filename}.report', 'w+') as file:
         file.write(json.dumps(report))
     
     print(f"[📸] Recorded x seconds video the {date.strftime('%Y/%m/%d')} at {date.strftime('%H:%M')}.")
@@ -50,9 +50,10 @@ def start_sensor():
     :return:
     """
     sensor = MotionSensor(27)
-    sensor.when_motion = record
-    sensor.when_no_motion = post_record
+    # sensor.when_motion = record
+    # sensor.when_no_motion = post_record
     was_motion = False
+    sensor.wait_for_no_motion()
     while True:
         is_motion = sensor.value == 1
 
